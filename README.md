@@ -1,5 +1,5 @@
-**When activated, a car key fob transmits a high-frequency pulse (around 315 MHz). This GNU radio project will use this pulse to detect Morse code by doing the following:
-**
+When activated, a car key fob transmits a high-frequency pulse (around 315 MHz). This GNU radio project will use this pulse to detect Morse code by doing the following:
+
 1. Detect the pulse with an SDR source block
 2. Isolate the pulse signal from noise using a bandpass filter centered at 315 MHz +/- 25 kHz
 3. Use Amplitude Shift Keying to distinguish between a binary "1" or binary "0"
