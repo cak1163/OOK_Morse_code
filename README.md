@@ -5,6 +5,8 @@ During transmission, a "1" is represented by sending a carrier wave at a fixed a
 
 This technique is used for garage, gate, and car keys, and is commonly used to transmit Morse code over radio frequencies in continuous wave (CW) operation.  
 
+This GNU Radio project demonstrates how a random binary data stream can be used to transmit and receive a Morse code message.
+
 # Procedure
 
 # Future Enhancements
