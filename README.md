@@ -11,7 +11,7 @@ This GNU Radio project demonstrates how a random binary data stream can be used 
 
 1. Start with a signal that generates a random binary data stream
 2. Use interpolation to increase the pulse duration of an incoming "1" or "0" to match a "dot," "dash," or "space" in Morse code
-3. Decode the incoming pulses into a Morse code and ASCII letter sequence using [python code/morse_generator_and_decoder.py]
+3. Decode the incoming pulses into Morse code and an ASCII letter sequence using the [Morse Generator and Decoder](python code/morse_generator_and_decoder.py) file
 
 ## Code
 The code for this project consists of two Morse code decoders: one corresponding to a random transmitted message, the other to the received message. Both of these use an incoming input signal and translate the input signal into Morse code and ASCII letters depending on the incoming amplitude and duration. 
