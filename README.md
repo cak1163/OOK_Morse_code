@@ -12,6 +12,8 @@ This GNU Radio project demonstrates how a random binary data stream can be used 
 To implement this, I started  
 
 # Code
-The code for this project consists of two Morse code decoders: one corresponding to a random transmitted message, the other to the received message. Both of these use an incoming input signal and translate the input signal into Morse code and ASCII letters depending on the incoming amplitude and duration.  
+The code for this project consists of two Morse code decoders: one corresponding to a random transmitted message, the other to the received message. Both of these use an incoming input signal and translate the input signal into Morse code and ASCII letters depending on the incoming amplitude and duration. 
+
+
 
 # Future Enhancements
