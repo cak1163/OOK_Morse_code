@@ -16,7 +16,7 @@ This GNU Radio project demonstrates how a random binary data stream can be used 
 5. Receive the transmitted signal and use envelope detection to obtain the original input signal
 6. Set threshold levels for accuracy to remove unnecessary noise
 7. Use the received input signal and decode it into Morse code and an ASCII letter sequence to confirm if it is the same sequence before transmission
-8. Plot the transmitted and received binary data stream in the time domain
+8. Plot the transmitted and received binary data stream with respect to time
 
 ## Code
 The code for this project consists of two Morse code decoders: one corresponding to a random transmitted message, the other to the received message. Both of these use an incoming input signal and translate the input signal into Morse code and ASCII letters depending on the incoming amplitude and duration. 
