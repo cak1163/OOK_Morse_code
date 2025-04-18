@@ -1,0 +1,647 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: binary_ask_morse_code
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Not titled yet
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 8.0]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: Signal sample rate
+    value: '100000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [160, 8.0]
+    rotation: 0
+    state: enabled
+- name: signal_freq
+  id: variable_qtgui_range
+  parameters:
+    comment: Variable carrier signal frequency
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-100000'
+    step: '1'
+    stop: '100000'
+    value: '20000'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [40, 8.0]
+    rotation: 0
+    state: enabled
+- name: analog_random_source_x_0
+  id: analog_random_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Random sequence binary generator
+    max: '2'
+    maxoutbuf: '0'
+    min: '0'
+    minoutbuf: '0'
+    num_samps: '100000'
+    repeat: 'True'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [40, 208.0]
+    rotation: 0
+    state: enabled
+- name: analog_sig_source_x_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: 'Carrier wave with variable frequency
+
+      initially set to 20 kHz'
+    freq: signal_freq
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    showports: 'False'
+    type: complex
+    waveform: analog.GR_COS_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 160.0]
+    rotation: 0
+    state: enabled
+- name: blocks_char_to_float_0
+  id: blocks_char_to_float
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale: '1'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [368, 176.0]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_mag_0
+  id: blocks_complex_to_mag
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Envelope detection
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [296, 632.0]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_real_0
+  id: blocks_complex_to_real
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [944, 96.0]
+    rotation: 0
+    state: enabled
+- name: blocks_float_to_complex_1
+  id: blocks_float_to_complex
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 80.0]
+    rotation: 0
+    state: enabled
+- name: blocks_head_0_1
+  id: blocks_head
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: 'Limits the number of samples
+
+      to avoid overflow'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: '2048'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 328.0]
+    rotation: 0
+    state: enabled
+- name: blocks_head_0_1_0
+  id: blocks_head
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: "Limits the number of samples \nto avoid overflow"
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: '2048'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [760, 688.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: "Modulating binary data stream \nwith a carrier wave at 1 kHz"
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [768, 80.0]
+    rotation: 0
+    state: enabled
+- name: blocks_repeat_0
+  id: blocks_repeat
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: "Extends the pulse duration \nthrough interpolation from\na randomly\
+      \ generated\nsequence of binary \"1\"\nand \"0\" values"
+    interp: '100'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [216, 232.0]
+    rotation: 0
+    state: enabled
+- name: blocks_threshold_ff_0
+  id: blocks_threshold_ff
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: "Threshold values to assign the \nreceived input as a binary \"1\" or\
+      \ \"0\""
+    high: '0.11'
+    init: '0'
+    low: '0.1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [488, 608.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_0_0_0
+  id: epy_block
+  parameters:
+    _source_code: "# Morse Code Generator and Decoder\n# Embedded Python Block (gr.sync_block)\n\
+      \nimport numpy as np\nfrom gnuradio import gr\n\nclass blk(gr.sync_block):\n\
+      \    def __init__(self):\n        gr.sync_block.__init__(\n            self,\n\
+      \            name='Morse Generator and Decoder',\n            in_sig=[np.float32],\n\
+      \            out_sig=[]\n        )\n\t# Morse code output\n        self.morse_output\
+      \ = ''\n\n\t# Morse code translation\n        self.letter = ''\n        self.morse_phrase\
+      \ = ''\n\n\t# Morse code dictionary\n        self.morse_code = {\n         \
+      \   '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E',\n           \
+      \ '..-.': 'F', '--.': 'G', '....': 'H', '..': 'I', '.---': 'J',\n          \
+      \  '-.-': 'K', '.-..': 'L', '--': 'M', '-.': 'N', '---': 'O',\n            '.--.':\
+      \ 'P', '--.-': 'Q', '.-.': 'R', '...': 'S', '-': 'T',\n            '..-': 'U',\
+      \ '...-': 'V', '.--': 'W', '-..-': 'X', '-.--': 'Y',\n            '--..': 'Z','-----':\
+      \ '0', '.----': '1', '..---': '2', '...--': '3',\n            '....-': '4',\
+      \ '.....': '5', '-....': '6', '--...': '7',\n            '---..': '8', '----.':\
+      \ '9'\n        }\n\n        self.last_bit = None # Store previous bit for comparison\n\
+      \        self.counter = 0 # Tracks bit duration\n        self.samp_rate = 100000\
+      \ # Signal sample rate\n        self.samples_per_ms = self.samp_rate / 1000\
+      \ # Convert sample rate from seconds to miliseconds\n\n\n    def decode(self,\
+      \ code):\n        if code != '':\n            letter = self.morse_code.get(code,\
+      \ '?') # '?' if not in Morse code dictionary\n            self.morse_phrase\
+      \ = self.morse_phrase + f\"{code} \" # Appending Morse code \n            self.letter\
+      \ = self.letter + letter\n\n    def work(self, input_items, output_items):\n\
+      \t# Threshold to determine binary \"1\" for input values > 0.1V\n\n        bits\
+      \ = (input_items[0] > 0.1).astype(np.int8)\n\n\t# Threshold and duration conditions\
+      \ for all bits\n        for i in bits:\n\n\t    # Initialization for first sample\n\
+      \            if self.last_bit is None:\n                self.last_bit = i #\
+      \ Store for comparison\n                self.counter = 1 # Initialize duration\
+      \ of bit\n\n            elif i == self.last_bit:\n\t\t# Increment counter if\
+      \ current bit is the same as previous\n\n                self.counter = self.counter\
+      \ + 1\n\t\t# Changed bit, determine duration period in miliseconds\n       \
+      \     else:\n                duration = self.counter / self.samples_per_ms\n\
+      \t\t\n\t\t# Morse code characterization from duration\n                if self.last_bit\
+      \ == 1:\n                    if duration <= 1:\n                        self.morse_output\
+      \ = self.morse_output + '.'\n                    elif duration > 1:\n      \
+      \                  self.morse_output = self.morse_output + '-'\n\t\t\n\t\t#\
+      \ Previous bit is 0, threshold conditions\n                else:\n         \
+      \           if 1 < duration <= 2:\n                        self.decode(self.morse_output)\n\
+      \                        self.morse_output = ''\n                    elif 2\
+      \ < duration <= 3:\n                        self.decode(self.morse_output)\n\
+      \                        self.morse_output = ''\n                        self.letter\
+      \ = self.letter + ' '\n                        self.morse_phrase = self.morse_phrase\
+      \ + '  '\n                    \n\t\t# Other shorter or longer pauses do nothing\n\
+      \n                self.last_bit = i\n                self.counter = 1\n\n  \
+      \      return len(input_items[0])\n\n    def stop(self):\n\t# Output information\
+      \ at the end of run\n\n        self.decode(self.morse_output)\n        if self.letter\
+      \ or self.morse_phrase != '':\n\t    \n\t    # Decoded message in Morse code\
+      \ and ASCII letters\n            print(\"Transmitted Morse:  \", self.morse_phrase)\n\
+      \            print(\"Transmitted Phrase:  \", self.letter)\n        return True"
+    affinity: ''
+    alias: ''
+    comment: "Converts the randomly generated binary sequence \nto a morse code sequence\
+      \ then translates the morse \ncode sequence into ASCII letters"
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('Morse Generator and Decoder', 'blk', [], [('0', 'float', 1)], [],
+      '', [])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [568, 336.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_0_0_0_0
+  id: epy_block
+  parameters:
+    _source_code: "# Morse Code Receiver and Decoder\n# Embedded Python Block (gr.sync_block)\n\
+      \nimport numpy as np\nfrom gnuradio import gr\nimport time as t\n\nclass blk(gr.sync_block):\n\
+      \    def __init__(self):\n\t# Initialize block and parameters\n\n        gr.sync_block.__init__(\n\
+      \            self,\n            name='Morse Receiver and Decoder',\n       \
+      \     in_sig=[np.float32],\n            out_sig=[]\n        )\n\n        # Morse\
+      \ code output \n        self.morse_output = ''\n\n\t# Morse code translation\n\
+      \        self.morse_phrase = ''\n        self.letter = ''\n\n\t# Morse code\
+      \ dictionary\n        self.morse_code = {\n            '.-': 'A', '-...': 'B',\
+      \ '-.-.': 'C', '-..': 'D', '.': 'E',\n            '..-.': 'F', '--.': 'G', '....':\
+      \ 'H', '..': 'I', '.---': 'J',\n            '-.-': 'K', '.-..': 'L', '--': 'M',\
+      \ '-.': 'N', '---': 'O',\n            '.--.': 'P', '--.-': 'Q', '.-.': 'R',\
+      \ '...': 'S', '-': 'T',\n            '..-': 'U', '...-': 'V', '.--': 'W', '-..-':\
+      \ 'X', '-.--': 'Y',\n            '--..': 'Z','-----': '0', '.----': '1', '..---':\
+      \ '2', '...--': '3',\n            '....-': '4', '.....': '5', '-....': '6',\
+      \ '--...': '7',\n            '---..': '8', '----.': '9'\n        }\n\n     \
+      \   self.last_bit = None # Store previous bit for comparison\n        self.counter\
+      \ = 0 # Tracks bit duration\n        self.samp_rate = 100000 # Signal sample\
+      \ rate\n        self.samples_per_ms = self.samp_rate // 1000 # Convert sample\
+      \ rate from seconds to miliseconds\n\n\n    def decode_morse(self, code):\n\
+      \        if code != '':\n            letter = self.morse_code.get(code, '?')\
+      \ # '?' if not in Morse code dictionary\n            self.morse_phrase = self.morse_phrase\
+      \ + f\"{code} \" # Appending Morse code\n            self.letter = self.letter\
+      \ + letter\n\n    def work(self, input_items, output_items):\n\t# Threshold\
+      \ to determine binary \"1\" for input values > 0.1V\n\n        bits = (input_items[0]\
+      \ > 0.1).astype(np.int8)\n\n\t# Threshold and duration conditions for all bits\n\
+      \        for i in bits:\n            \n            # Initialization for first\
+      \ sample\n            if self.last_bit is None:\n                self.last_bit\
+      \ = i # Store for comparison\n                self.counter = 1 # Initialize\
+      \ duration of bit\n\n            elif i == self.last_bit:\n\t\t# Increment counter\
+      \ if current bit is the same as previous\n\n                self.counter = self.counter\
+      \ + 1\n\t\t# Changed bit, determine duration period in miliseconds\n       \
+      \     else:\n                duration = self.counter / self.samples_per_ms\n\
+      \t\t\n\t\t# Morse code characterization from duration \n                if self.last_bit\
+      \ == 1:\n                    if duration <= 1:\n                        self.morse_output\
+      \ = self.morse_output + '.'\n                    elif duration > 1:\n      \
+      \                  self.morse_output = self.morse_output + '-'\n\t\t\n     \
+      \           else:\n                    if 1 < duration <= 2:\n             \
+      \           self.decode_morse(self.morse_output)\n                        self.morse_output\
+      \ = ''\n                    elif 2 < duration <= 3:\n                      \
+      \  self.decode_morse(self.morse_output)\n                        self.morse_output\
+      \ = ''\n                        self.letter = self.letter + ' '\n          \
+      \              self.morse_phrase = self.morse_phrase + '  '\n              \
+      \      \n\t\t# Other shorter or longer pauses do nothing\n\n               \
+      \ self.last_bit = i\n                self.counter = 1\n\n        return len(input_items[0])\n\
+      \n    def stop(self):\n\t# Output information at the end of run\n\n        self.decode_morse(self.morse_output)\n\
+      \        if self.letter or self.morse_phrase != '':\n\n            # Delaying\
+      \ receiver output from transmission\n            t.sleep(0.1) \n           \
+      \ \n            # Decoded message in Morse code and ASCII letters\n        \
+      \    print(\"Received Morse:  \", self.morse_phrase)\n            print(\"Received\
+      \ Phrase:  \", self.letter)\n        return True"
+    affinity: ''
+    alias: ''
+    comment: "Converts the received binary sequence to a morse \ncode sequence then\
+      \ translates the morse code \nsequence into ASCII letters."
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('Morse Receiver and Decoder', 'blk', [], [('0', 'float', 1)], [],
+      '', [])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 696.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_time_sink_x_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'True'
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'False'
+    entags: 'False'
+    grid: 'False'
+    gui_hint: ''
+    label1: Signal 1
+    label10: Signal 10
+    label2: Signal 2
+    label3: Signal 3
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '-1'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '"Transmitted BASK Signal (time domain)"'
+    nconnections: '1'
+    size: '2048'
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '1'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '1'
+    ymin: '-1'
+    yunit: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1152, 64.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_time_sink_x_0_0
+  id: qtgui_time_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    axislabels: 'True'
+    color1: blue
+    color10: dark blue
+    color2: red
+    color3: green
+    color4: black
+    color5: cyan
+    color6: magenta
+    color7: yellow
+    color8: dark red
+    color9: dark green
+    comment: ''
+    ctrlpanel: 'False'
+    entags: 'True'
+    grid: 'False'
+    gui_hint: ''
+    label1: Signal 1
+    label10: Signal 10
+    label2: Signal 2
+    label3: Signal 3
+    label4: Signal 4
+    label5: Signal 5
+    label6: Signal 6
+    label7: Signal 7
+    label8: Signal 8
+    label9: Signal 9
+    legend: 'True'
+    marker1: '-1'
+    marker10: '-1'
+    marker2: '-1'
+    marker3: '-1'
+    marker4: '-1'
+    marker5: '-1'
+    marker6: '-1'
+    marker7: '-1'
+    marker8: '-1'
+    marker9: '-1'
+    name: '"Received BASK Signal (time domain)"'
+    nconnections: '1'
+    size: '2048'
+    srate: samp_rate
+    stemplot: 'False'
+    style1: '1'
+    style10: '1'
+    style2: '1'
+    style3: '1'
+    style4: '1'
+    style5: '1'
+    style6: '1'
+    style7: '1'
+    style8: '1'
+    style9: '1'
+    tr_chan: '0'
+    tr_delay: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_slope: qtgui.TRIG_SLOPE_POS
+    tr_tag: '""'
+    type: float
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    ylabel: Amplitude
+    ymax: '1'
+    ymin: '-1'
+    yunit: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [760, 528.0]
+    rotation: 0
+    state: enabled
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: Transmitted signal
+    stream_id: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1152, 200.0]
+    rotation: 0
+    state: enabled
+- name: virtual_source_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: Received Signal
+    stream_id: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [104, 624.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [analog_random_source_x_0, '0', blocks_repeat_0, '0']
+- [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '1']
+- [blocks_char_to_float_0, '0', blocks_float_to_complex_1, '0']
+- [blocks_char_to_float_0, '0', blocks_head_0_1, '0']
+- [blocks_complex_to_mag_0, '0', blocks_threshold_ff_0, '0']
+- [blocks_complex_to_real_0, '0', qtgui_time_sink_x_0, '0']
+- [blocks_float_to_complex_1, '0', blocks_multiply_xx_0, '0']
+- [blocks_head_0_1, '0', epy_block_0_0_0, '0']
+- [blocks_head_0_1_0, '0', epy_block_0_0_0_0, '0']
+- [blocks_multiply_xx_0, '0', blocks_complex_to_real_0, '0']
+- [blocks_multiply_xx_0, '0', virtual_sink_0, '0']
+- [blocks_repeat_0, '0', blocks_char_to_float_0, '0']
+- [blocks_threshold_ff_0, '0', blocks_head_0_1_0, '0']
+- [blocks_threshold_ff_0, '0', qtgui_time_sink_x_0_0, '0']
+- [virtual_source_1, '0', blocks_complex_to_mag_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.12.0
