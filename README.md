@@ -19,5 +19,6 @@ This GNU Radio project demonstrates how a random binary data stream can be used 
 8. Plot the transmitted and received binary data stream against time, in miliseconds
 
 ## Code
-The code for this project consists of two Morse code decoders: one corresponding to a random transmitted message, the other to the received message. Both of these use an incoming input signal and translate the input signal into Morse code and ASCII letters depending on the incoming amplitude and duration. 
+The code for this project consists of two Morse code decoders: one corresponding to a random transmitted message, the other to the received message. Both of these use an incoming input signal and translate the input signal into Morse code and ASCII letters depending on the incoming amplitude and duration. Specifically, the files do the following:
+  * Test
 
