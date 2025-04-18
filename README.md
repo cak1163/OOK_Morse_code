@@ -20,6 +20,10 @@ This GNU Radio project demonstrates how a random binary data stream can be used 
 
 ## Code
 The code for this project consists of two Morse code decoders: one corresponding to a random transmitted message, the other to the received message. Both of these use an incoming input signal and translate the input signal into Morse code and ASCII letters depending on the incoming amplitude and duration. Specifically, the files do the following:
-  * Initializes output, phrase parameters, and the Morse code dictionary
-  * 
+  * Initializes output and phrase parameters, the Morse code dictionary, and sample rate
+  * Appends raw Morse code and decodes it into a corresponding letter. If not in the dictionary, inserts a '?'
+  * Converts the input signal into bits after a given amplitude threshold value
+  * Loops through bits, tracks them, and determines the duration
+  * From the duration and bit value, determine if the signal corresponds to a dot, dash, or space
+  * Prints the Morse code and ASCII letters at the end of the process
 
